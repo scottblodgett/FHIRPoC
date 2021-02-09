@@ -1,0 +1,144 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>HL7 FHIR API</title>
+	<link rel="stylesheet" type="text/css" href="./view.min.css" media="all">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="./script.min.js"></script>
+</head>
+
+<body id="main_body">
+	<form id="fhirForm" class="appnitro" action="">
+		<img id="top" src="./images/top.png" alt="">
+		<div id="form_container">
+			<h1><a>HL7 FHIR API Test Harness</a></h1>
+			<form id="fhirForm" class="appnitro">
+				<div class="form_description">
+					<p>Retrieves data from <a href="https://synthea.mitre.org/about" target="_blank">MITRE SyntheticMass Project</a></p>
+				</div>
+				<ul>
+					<li id="li_1">
+						<label class="description">Basic info only for patient with GUID </label>
+						<div>
+							<input id="element_8_1" name="rdOption" class="element radio" type="radio" value="1"
+								checked="true" />
+							<input id="element_1" name="txtBasic" class="element text medium" type="text"
+								maxlength="255" value="c8a021dc-b91e-4fe7-b6ec-81c948013fc4" />
+						</div>
+					</li>
+					<li id="li_2">
+						<label class="description">All data for patient with GUID</label>
+						<div>
+							<input id="element_8_2" name="rdOption" class="element radio" type="radio" value="2" />
+							<input id="element_2" name="txtAll" class="element text medium" type="text" maxlength="255"
+								value="c8a021dc-b91e-4fe7-b6ec-81c948013fc4" />
+						</div>
+					</li>
+					<li id="li_3">
+						<label class="description">Dump basic info for n number of patients</label>
+						<div>
+							<input id="element_8_3" name="rdOption" class="element radio" type="radio" value="3" />
+							<input id="element_3" name="txtNum" class="element text medium" type="text" maxlength="255"
+								value="3" />
+						</div>
+					</li>
+					<li id="li_4">
+						<label class="description">Condition Code(s)</label>
+						<div>
+							<input id="element_8_4" name="rdOption" class="element radio" type="radio" value="4" />
+							<input id="element_4" name="txtCond" class="element text medium" type="text" maxlength="255"
+								value="444814009,75498004,36971009,40055000" />
+						</div>
+					</li>
+					<li id="li_5">
+						<label class="description">Procedure(s)</label>
+						<div>
+							<input id="element_8_5" name="rdOption" class="element radio" type="radio" value="5" />
+							<input id="element_5" name="txtProc" class="element text medium" type="text" maxlength="255"
+								value="112790001" />
+						</div>
+					</li>
+					<li id="li_6">
+						<label class="description">Date Range (Start to End)</label>
+						<div>
+							<span for="element_7"></span>
+							<span>
+								<input id="element_8_6" name="rdOption" class="element radio" size="2" type="radio"
+									value="6" /> </span> <span>
+
+								<input id="element_7_1" name="element_7_1" class="element text" size="2" maxlength="2"
+									value="" type="text"> /
+								<label for="element_7_1">MM</label>
+							</span>
+							<span>
+								<input id="element_7_2" name="element_7_2" class="element text" size="2" maxlength="2"
+									value="" type="text"> /
+								<label for="element_7_2">DD</label>
+							</span>
+							<span>
+								<input id="element_7_3" name="element_7_3" class="element text" size="4" maxlength="4"
+									value="" type="text">
+								<label for="element_7_3">YYYY</label>
+							</span>
+							<span id="calendar_7">
+								<img id="cal_img_7" class="datepicker" src="./images/calendar.gif" alt="Pick a date.">
+							</span>
+							<script type="text/javascript">
+								Calendar.setup({
+									inputField: "element_7_3",
+									baseField: "element_7",
+									displayArea: "calendar_7",
+									button: "cal_img_7",
+									ifFormat: "%B %e, %Y",
+									onSelect: selectDate
+								});
+							</script>
+							<span for="element_77"></span>
+							<span>
+								<input id="element_77_1" name="element_77_1" class="element text" size="2" maxlength="2"
+									value="" type="text"> /
+								<label for="element_77_1">MM</label>
+							</span>
+							<span>
+								<input id="element_77_2" name="element_77_2" class="element text" size="2" maxlength="2"
+									value="" type="text"> /
+								<label for="element_77_2">DD</label>
+							</span>
+							<span>
+								<input id="element_77_3" name="element_77_3" class="element text" size="4" maxlength="4"
+									value="" type="text">
+								<label for="element_77_3">YYYY</label>
+							</span>
+							<span id="calendar_77">
+								<img id="cal_img_77" class="datepicker" src="./images/calendar.gif" alt="Pick a date.">
+							</span>
+							<script type="text/javascript">
+								Calendar.setup({
+									inputField: "element_77_3",
+									baseField: "element_77",
+									displayArea: "calendar_77",
+									button: "cal_img_77",
+									ifFormat: "%B %e, %Y",
+									onSelect: selectDate
+								});
+							</script>
+						</div>
+					</li>
+					<div id="serverResults"></div>
+					<li class="buttons">
+						<input type="hidden" name="form_id" value="999" />
+						<input type="button" value="Submit" id="submitButton">
+					</li>
+				</ul>
+			</form>
+			<div id="footer">
+				Copyright &copy; 2021 Scott Blodgett.
+			</div>
+		</div>
+		<img id="bottom" src="./images/bottom.png" alt="">
+</body>
+
+</html>

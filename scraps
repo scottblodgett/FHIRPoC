@@ -1,0 +1,3 @@
+	<script type="text/javascript" src="./script/view.js"></script>
+	<script type="text/javascript" src="./script/calendar.js"></script>
+	<script type="text/javascript" src="./script/submitter.js"></script>
